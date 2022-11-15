@@ -51,9 +51,7 @@ $(function () {
   function LoadAgendaFromLocalStorage(){
     var agenda = $("[class^='col-8 col-md-10 description']");
     for(var i = 0; i < agenda.length; i++){
-      var hourAgenda = "";
-      hourAgenda = localStorage.getItem(agenda[i].parentNode.id);
-      agenda[i].value = hourAgenda;
+      agenda.eq(i).text(localStorage.getItem(agenda[i].parentNode.id));
     }
   }
 
@@ -98,7 +96,8 @@ $(function () {
   function DisplayCurrentDateInHeader(){
     var now = dayjs();
     //document.getElementById('currentDay').textContent = getDayName(now.day()) + ", " + getMonthName(now.month()) + " " + getOrdinal(now.date());
-    document.getElementById('currentDay').textContent = now.format("dddd, MMMM") + " " + getOrdinal(now.date());
+    //document.getElementById('currentDay').textContent = now.format("dddd, MMMM") + " " + getOrdinal(now.date());
+    $("#currentDay").text(now.format("dddd, MMMM") + " " + getOrdinal(now.date()));
   }
 
   DisplayCurrentDateInHeader();

@@ -49,7 +49,7 @@ $(function () {
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   function LoadAgendaFromLocalStorage(){
-    var agenda = document.querySelectorAll("[class^='col-8 col-md-10 description']");
+    var agenda = $("[class^='col-8 col-md-10 description']");
     for(var i = 0; i < agenda.length; i++){
       var hourAgenda = "";
       hourAgenda = localStorage.getItem(agenda[i].parentNode.id);

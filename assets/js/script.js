@@ -12,7 +12,15 @@ $(function () {
   var saveButtons = $("[class^='btn saveBtn col-2 col-md-1']");
   for(var i = 0; i < saveButtons.length; i++){
     saveButtons.eq(i).on("click", function(){
-      localStorage.setItem(this.parentNode.id, this.parentNode.children[1].value);
+      let appointment = $(this).parent().children().eq(1).val().trim();
+      if(appointment != ""){
+        localStorage.setItem($(this).parent().attr('id'), appointment);
+        $("#statusInformation").text("Updated " + $(this).parent().children().eq(0).text() + " agenda!");
+        
+        setTimeout(function() {
+          $("#statusInformation").text("");
+        }, 2000);
+      }
     });
   }
   
@@ -92,8 +100,6 @@ $(function () {
   //Function to display the current date in header.
   function DisplayCurrentDateInHeader(){
     var now = dayjs();
-    //document.getElementById('currentDay').textContent = getDayName(now.day()) + ", " + getMonthName(now.month()) + " " + getOrdinal(now.date());
-    //document.getElementById('currentDay').textContent = now.format("dddd, MMMM") + " " + getOrdinal(now.date());
     $("#currentDay").text(now.format("dddd, MMMM") + " " + getOrdinal(now.date()));
   }
 

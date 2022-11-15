@@ -9,13 +9,10 @@ $(function () {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
 
-  var saveButtons = document.querySelectorAll("[class^='btn saveBtn col-2 col-md-1']");
+  var saveButtons = $("[class^='btn saveBtn col-2 col-md-1']");
   for(var i = 0; i < saveButtons.length; i++){
-    saveButtons[i].addEventListener("click", function(){
+    saveButtons.eq(i).on("click", function(){
       localStorage.setItem(this.parentNode.id, this.parentNode.children[1].value);
-
-      console.log(this.parentNode.children[1].value);      
-      console.log(this.parentNode.id);
     });
   }
   

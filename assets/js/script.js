@@ -111,6 +111,8 @@ $(function () {
     //var advancedFormat = require('dayjs/plugin/advancedFormat')
     //dayjs.extend(advancedFormat)
     //$("#currentDay").text(now.format("dddd, MMMM Do"));
+    var now = dayjs();
+    $("#currentDay").text(now.format("dddd, MMMM") + " " + getOrdinal(now.date()) + ", " + now.format("YYYY"));
     
     setInterval(function(){
       var now = dayjs();
